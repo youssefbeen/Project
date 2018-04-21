@@ -1,0 +1,30 @@
+<div class="page-header">
+  <h1 align="center">Show Article Details</h1>
+</div>
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">Title</div>
+        <div class="col-md-8"><%= @article.title %></div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">Description</div>
+        <div class="col-md-8"><%= @article.description %></div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">Price</div>
+        <div class="col-md-8"><%= @article.price %></div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <%= link_to "edit", edit_article_path(@article) %>
+        </div>
+        <div class="col-md-8"><%= link_to "delete",  article_path(@article), method: :delete, data: {confirm: "Are u sure?"}  %></div>
+    </div>
+    
+    <button class="btn btn-default"><%=link_to "Index", articles_path %> </button>
+</div>
