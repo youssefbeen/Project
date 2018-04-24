@@ -19,6 +19,15 @@
         <div class="col-md-4">Price</div>
         <div class="col-md-8"><%= @article.price %></div>
     </div>
+       
+       <div class="row">
+        <div class="col-md-4">Pictures</div>
+        <div class="col-md-8"><% @pictures.each do |p| %>
+  <%= image_tag p.picture_url %>
+<% end %></div>
+    </div>
+    
+    
     <div class="row">
         <div class="col-md-4">
             <%= link_to "edit", edit_article_path(@article) %>
