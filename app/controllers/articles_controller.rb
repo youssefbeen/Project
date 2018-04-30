@@ -3,18 +3,27 @@ class ArticlesController < ApplicationController
     before_action :set_article, except: [:new, :create, :index, :my]
     before_action :require_user, except: [:index, :show]
     before_action :require_same_user, only: [:update, :edit, :destroy]
+    before_action :load_category
     
     def new 
        @article = Article.new 
         @pictures = @article.pictures.build
+        @categories = Category.all
+    end
+    
+    def load_category
+        @category = Category.find(params[:category_id]) if params[:category_id]
     end
     
     def create
         @article = Article.new(article_params)
         @article.user = current_user
+#        @article.category = params[:category_id]
         if @article.save
-            params[:pictures]['picture'].each do |a|
-                @pictures = @article.pictures.create!(:picture => a)
+            if params[:pictures]
+                params[:pictures]['picture'].each do |a|
+                    @pictures = @article.pictures.create!(:picture => a)
+                end
             end
             
             
@@ -51,7 +60,8 @@ class ArticlesController < ApplicationController
     end
     
     def index
-        @articles = Article.all
+        
+        @articles = @category ? @category.articles : Article.all
     end
     
     def my
@@ -59,10 +69,10 @@ class ArticlesController < ApplicationController
     end
     
     
-    private
+    
     
     def article_params
-       params.require(:article).permit(:title, :description, :price, pictures_attributes: [:pictures]) 
+       params.require(:article).permit(:title, :description, :price, :category_id, pictures_attributes: [:pictures]) 
     end
     
     def set_article

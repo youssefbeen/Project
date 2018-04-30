@@ -1,26 +1,51 @@
-<div class="page-header">
-  <h1 align="center">Listing All Articles</h1>
-</div>
+<div class="col-sm-9" style="background-color: #f1f1f1">
+       <% @articles.each do |a| %>
+        <div class="col-md-4">
+          <div class="product-item">
+              <h3 style="font-weight: bold"><%= link_to a.title, article_path(a) %> 
+              <% if a.user == current_user or current_user.admin? %>
+                  <%= link_to article_path(a), method: :delete, data: {confirm: "Are u Sure?" }, class: "btn btn-danger btn-xs ico" do %>
+                  <span class="glyphicon glyphicon-trash"></span>
+                  <% end %>
+                  <%=link_to edit_article_path(a), class: "btn btn-default btn-xs ico" do %> 
+                  <span class="glyphicon glyphicon-pencil"></span>
+                  <% end %>
+                <% end %>
+              </h3>
+              <div class="pi-img-wrapper">
+                  <%= image_tag(a.pictures[0].picture_url, class: "img-responsive") %>
+                <div>
+                 <%= link_to "View", article_path(a), class: "btn btn_view" %>
+                </div>
+              </div>
+              <h3 style="text-transform: none"><%= truncate(a.description, length: 25){ link_to "See More", article_path(a) } %></h3>
+               <div class="pi-price"><%= a.price %> MAD</div>
+            </div>
+        </div>
+           <% end %>
+            
 
-
-<table class="table table-striped">
-  <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Price</th>
-  </tr>
-      <% @articles.each do |a| %>
+        
+    
+    <table class="table table-striped">
       <tr>
-          <td><%= a.title %></td>
-          <td><%=a.description%></td>
-          <td><%=a.price%></td>
-          <td><%= link_to "Show", article_path(a) %></td>
-          <td><%= link_to "Delete", article_path(a), method: :delete, data: {confirm: "Are u Sure?" } %></td>
-    </tr>
-      <% end %>
-      
-</table>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Price</th>
+      </tr>
+          <% @articles.each do |a| %>
+          <tr>
+              <td><%= a.title %></td>
+              <td><%=a.description%></td>
+              <td><%=a.price%></td>
+              <td><%= link_to "Show", article_path(a) %></td>
+              <td><%= link_to "Delete", article_path(a), method: :delete, data: {confirm: "Are u Sure?" } %></td>
+        </tr>
+          <% end %>
+
+    </table>
 
 
-<button class="btn btn-default"><%=link_to "Add Article", new_article_path %> </button>
-<button class="btn btn-default"><%=link_to "Show my Articles", myArticle_path %> </button>
+    <button class="btn btn-default"><%=link_to "Add Article", new_article_path %> </button>
+    <button class="btn btn-default"><%=link_to "Show my Articles", myArticle_path %> </button>
+</div>

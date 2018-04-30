@@ -26,12 +26,22 @@
     <div class="col-sm-10">
      <%= f.text_field :price, class: "form-control", placeholder: "Price" %>
     </div>
+    <% if !@article.id %>
     <div class="col-sm-10">
     <%= f.fields_for :pictures do |g| %>
     
      <%= g.file_field :picture, :multiple => true, class: "form-control", name: "pictures[picture][]", placeholder: "picture" %>
     <% end %>
     </div>
+    <% end %>
+  </div>
+  <div class="form-group">
+       <div class="col-sm-2 control-label">
+           <%= f.label :category %>
+       </div>
+        <div class="col-sm-10">
+            <%= collection_select(:article, :category_id, Category.all, :id, :name)%>  
+        </div>
   </div>
   
   <div class="form-group">

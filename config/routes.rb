@@ -11,4 +11,13 @@ Rails.application.routes.draw do
     delete 'logout', to: 'sessions#destroy'
     
     get 'myArticle', to: 'articles#my'
+    resources :categories
+    
+    resources "pictures"
+#    get 'manage/:id', to: 'categories#index'
+#    post 'manage/:id', to: 'categories#create'
+#    delete 'manage/:id', to: 'categories#destroy'
+#
+
 end
+

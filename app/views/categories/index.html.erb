@@ -1,0 +1,11 @@
+<% @categories.each do |c| %>
+<%= c.name %>
+<%= link_to "Delete", category_path(c), method: :delete, data: { confirm: "Are you sure?" } %>
+<% end %>
+
+
+<%= form_for @category, url: {controller: "categories", action: "create"} do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<%= f.submit %>
+<% end %>
