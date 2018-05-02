@@ -3,7 +3,7 @@
         <div class="col-md-4">
           <div class="product-item">
               <h3 style="font-weight: bold"><%= link_to a.title, article_path(a) %> 
-              <% if a.user == current_user or current_user.admin? %>
+              <% if logged_in? and (a.user == current_user or current_user.admin?)%>
                   <%= link_to article_path(a), method: :delete, data: {confirm: "Are u Sure?" }, class: "btn btn-danger btn-xs ico" do %>
                   <span class="glyphicon glyphicon-trash"></span>
                   <% end %>

@@ -50,17 +50,5 @@
    
    
     
-    <div class="row">
-       <%= form_for @pictures.first, :url => url_for(:controller => 'pictures', :action => 'destroy') do |f| %>
-        <% @pictures.each do |p| %>
-        <%= fields_for "picture[]", do |form| %>
-              <%= form.check_box :picture %>
-              
-            <% end %>
-        <% end %>
-        <%= f.submit %>
-        <%end%>
-    </div>
-    
     <button class="btn btn-default"><%=link_to "Index", articles_path %> </button>
 </div>
