@@ -1,0 +1,15 @@
+<%= render 'shared/search' %>
+<div class="containerc col-md-offset-1">
+    <div class="col-md-3 city">
+        <h3>Choisissez une ville:</h3>
+        <ul>
+            <% City.all.each do |v| %>
+            <li><%=v.name%></li>
+            <%end%>
+        </ul>
+        
+    </div>
+    <div class="col-md-9">
+        <h3>Choisissez une categorie</h3>
+    </div>
+</div>

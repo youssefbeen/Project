@@ -227,7 +227,7 @@ img {
 }
 .pi-img-wrapper {
     position: relative;
-    height: 200px;
+    height: 100%;
     overflow: hidden;
     
 }
@@ -298,3 +298,258 @@ img {
 .ico {
     float: right;
 }
+
+.creer{
+    margin: 20px;
+    width: 100%;
+text-align: right;
+padding-right: 20px;
+}
+.pad{
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1.2em;
+
+}
+
+.head{
+    background-color: #F7F7F7;
+    padding-bottom: 10px;
+    padding: 10px;
+    font-size: 1.2em;
+    border: 1px solid #CFCFCF;
+}
+
+
+.head h4 span{
+    background-color: #c66e69;
+    padding: 3px;
+    border-radius: 7px;
+}
+
+.text {
+    margin-left: 20px;
+    text-align: center;
+}
+
+.new{
+    border: 2px solid #F3F3F3;
+    border-radius: 7px;
+    width: 100%;
+    padding-top: 30px;
+    background-image: url(asset-path('body_bg.png'));
+}
+.new container{
+    background-color: white;
+}
+
+.forms{
+    margin: auto;
+    width: 40%;
+    background-color: white;
+    padding-left: 3px;
+    text-align: center;
+    border: 1px solid #CFCFCF;
+    border-radius: 7px;
+
+
+
+}
+
+.txt{
+    width: 30%;
+    margin: auto;
+    text-align: center;
+}
+
+.mod {
+    width: 100%
+}
+
+.mod:hover{
+    background-color: aliceblue
+}
+
+select{
+    width: 25%;
+    height: 120%;
+}
+
+
+.test{
+    
+    display: block;
+//    width: 50%;
+    margin: 50% auto;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.bg:hover{
+    background-color: #F4FAFB;
+    
+}
+
+.thumb{
+  img{
+    width: 50px;
+    height: 50px;
+  }
+}
+.custom-file label input{
+    display: none;
+    
+}
+
+.bt{
+   width: 50%
+}
+
+.body label {
+    margin-left: 25%
+}
+
+.nested-fields{
+    height: 200px
+}
+
+.error{
+    color: green
+}
+
+.custom-file input{
+    display: none
+    
+}
+
+
+.info{
+    margin-left: 40px;
+    padding: 10px;
+    font-size: 1.2em;
+    font-weight: 500
+}
+
+.info div{
+    padding: 5px;
+}
+
+.block_info h4{
+    margin-left: 10px;
+    font-weight: bold
+}
+
+.articles{
+    border: 2px solid #F3F3F3;
+    border-radius: 7px;
+    padding-top: 30px;
+    background-image: url(asset-path('body_bg.png'));
+}
+
+.articles .container{
+    background-color: white;
+    border: 1px solid #CFCFCF;
+    border-radius: 5px;
+
+}
+
+.bg{
+    border-bottom: 1px solid #CFCFCF;
+    margin: 0;
+
+}
+
+.count button{
+    width: 100%;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.count button span{
+    font-weight: normal;
+    font-size: 0.8em;
+}
+
+.count{
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.test span{
+    font-weight: normal;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+.lnk:link, .link:visited{
+    color: black
+}
+
+.title{
+    margin-bottom: 35px;
+    color: #366797;
+    text-transform: capitalize;
+}
+.title span{
+    color: #9A9A9A;
+}
+
+.search{
+    background-image: url(asset-path('searchbox_bg.png'));
+    width: 100%;
+}
+
+.search h1, .search h3{
+    color: white;
+    text-align: center;
+}
+
+.search .form-inline{
+}
+.search .form-inline .form-group .form-control{
+    height: 40px;
+    width: 300px;
+    margin: 5px;
+}
+
+.prix .form-control{
+    width: 50px;
+    display: inline-block;
+}
+
+.search .form-inline .form-group .btn{
+    height: 40px;
+    width: 50px;
+    box-shadow: 0 5px 8px;
+    font-size: 1.5em
+}
+
+.city h3{
+    text-decoration: underline;
+}
+.city ul{
+    list-style-type: circle;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #366797;
+}
+.city ul li{
+    margin: 5px;
+}
+.logo{
+    padding: 30px
+}
+
+.rech li {
+    color: black;
+    font-weight: bold;
+    margin: 5px;
+}
+
+.annonce {
+    padding: 10px 25px;
+    margin-top: 8px;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-align: left;
+}
+

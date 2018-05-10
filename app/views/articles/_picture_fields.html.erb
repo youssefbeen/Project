@@ -1,0 +1,16 @@
+
+<div class="nested-fields row">
+    <div class="custom-file col-md-3">
+       <label class="btn btn-primary bt"> Add file <%= f.file_field :picture %>
+ </label>
+        
+    </div>
+    <div class="thumb col-md-4">
+        <%= image_tag f.object.picture.url(:small_thumb), class: 'img-responsive' if f.object.picture.url.present? %>
+    </div>
+    <div class="col-md-3">
+        <%= link_to_remove_association "remove", f, class: "btn btn-danger " %>
+    </div>
+    
+    <%= f.hidden_field :picture_cache, :value => f.object.picture_cache %>
+</div>

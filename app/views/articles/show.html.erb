@@ -1,9 +1,11 @@
 
 
 
-<div class="container col-sm-9">
-   <div class="row">
+
+<div class="container ">
+   <div class="row col-md-9">
     <div class="card">
+    <%= l @article.created_at.to_date, format: :short %>
 			<div class="container-fliud">
 				<div class="wrapper row">
 					<div class="preview col-md-6">
@@ -17,14 +19,14 @@
 						<ul class="preview-thumbnail nav nav-tabs">
                          <% c= 0 %>
                           <% @pictures.each do |p| %>
-						  <li class=" <%= "active" if c==0 %>"><a data-target="#pic-<%= c+1 %>" data-toggle="tab"><%= image_tag p.picture_url, height: "50", width:"100%" %></a></li>
+						  <li class=" <%= "active" if c==0 %>"><a data-target="#pic-<%= c+1 %>" data-toggle="tab"><%= image_tag p.picture_url(:thumb), height: "50", width:"100%" %></a></li>
 						  <% c = c+1 %>
 						  <% end %>
 						</ul>
 						
 					</div>
 					<div class="details col-md-6">
-						<h3 class="product-title">men's shoes fashion</h3>
+						<h3 class="product-title"><%= @article.title %></h3>
 						<div class="rating">
 							<div class="stars">
 								
@@ -49,6 +51,4 @@
    </div>
    
    
-    
-    <button class="btn btn-default"><%=link_to "Index", articles_path %> </button>
 </div>

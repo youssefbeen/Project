@@ -41,10 +41,19 @@ class UsersController < ApplicationController
         
     end
     
+    def check_email
+        @us = User.find_by_email(params[:email])
+        @bool = @us ? nil : true
+        respond_to do |format|
+            format.json { render json: @bool.to_json }
+        end
+    end
+
+
     private
     
     def params_user
-        params.require(:user).permit(:username, :email, :password, :image)
+        params.require(:user).permit(:username, :email, :password, :image, :password_confirmation, :tel)
     end
     
     def set_user

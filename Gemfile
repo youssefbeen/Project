@@ -5,10 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "fog-google"
-gem "google-api-client", "> 0.8.5", "< 0.9"
-gem "mime-types"
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
 # Use sqlite3 as the database for Active Record
@@ -35,7 +31,20 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'carrierwave', '~> 1.0'
+gem "cocoon"
 
+gem 'client_side_validations'
+gem 'jquery-validation-rails'
+
+gem "mini_magick"
+
+gem "fog-google"
+gem "google-api-client", "> 0.8.5", "< 0.9"
+gem "mime-types"
+
+gem "jquery-fileupload-rails"
+gem 'ransack'
+gem 'rails-i18n', '~> 5.1'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

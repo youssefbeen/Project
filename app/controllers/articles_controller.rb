@@ -1,14 +1,16 @@
 class ArticlesController < ApplicationController
     
     before_action :set_article, except: [:new, :create, :index, :my]
-    before_action :require_user, except: [:index, :show]
+    before_action :require_user, except: [:index, :show, :new, :create]
     before_action :require_same_user, only: [:update, :edit, :destroy]
     before_action :load_category
     
     def new 
-       @article = Article.new 
+        @article = Article.new 
         @pictures = @article.pictures.build
         @categories = Category.all
+        @article.user = current_user ? current_user : User.new
+        @user= @article.user
     end
     
     def load_category
@@ -16,24 +18,36 @@ class ArticlesController < ApplicationController
     end
     
     def create
+          
+#        @pics = [params[:picture_0], params[:picture_1]]
+        
         @article = Article.new(article_params)
-        @article.user = current_user
+        @article.user = current_user if current_user 
+        @user= @article.user
+
+#        @article.pictures.new(@pics[0])
+#        @article.pictures.new(@pics[1])
+#        @user = logged_in? ? current_use
+#        r : User.new
+#        @article.user = @user
 #        @article.category = params[:category_id]
+        
+    respond_to do |format|
+
         if @article.save
-            if params[:pictures]
-                params[:pictures]['picture'].each do |a|
-                    @pictures = @article.pictures.create!(:picture => a)
-                end
-            end
-            
-            
+#            if params[:pictures]
+#                params[:pictures]['picture'].each do |a|
+#                    @pictures = @article.pictures.create!(:picture => a)
+#                end
+#            end
             
             
             flash[:success] = "Article was successfully created"
-            redirect_to article_path(@article)
+            format.html{redirect_to article_path(@article)}
         else
-            render 'new'
+            format.html{render action: "new" }
         end
+    end
     end
     
     def show
@@ -59,9 +73,12 @@ class ArticlesController < ApplicationController
         end
     end
     
+    
+
     def index
-        
-        @articles = @category ? @category.articles : Article.all
+        @search = Article.search(params[:q])
+        @articles = @search.result
+#        @articles = @category ? @category.articles : Article.all
     end
     
     def my
@@ -72,10 +89,11 @@ class ArticlesController < ApplicationController
     
     
     def article_params
-       params.require(:article).permit(:title, :description, :price, :category_id, pictures_attributes: [:pictures]) 
+       params.require(:article).permit(:title, :description, :price, :category_id, :city_id, pictures_attributes: [:picture, :picture_cache,:_destroy], user_attributes: [:username, :tel, :email, :password]) 
     end
     
     def set_article
+        @search = Article.search(params[:q])
        @article = Article.find(params[:id]) 
     end
     

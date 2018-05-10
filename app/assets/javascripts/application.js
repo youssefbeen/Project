@@ -14,11 +14,9 @@
 //= require jquery
 //= require bootstrap-sprockets  
 //= require turbolinks
+//= require cocoon
+//= require jquery-fileupload
+//= require rails.validations
+//= require jquery.validate
 //= require_tree .
 
-$(document).ready(function(ev){
-    $('#custom_carousel').on('slide.bs.carousel', function (evt) {
-      $('#custom_carousel .controls li.active').removeClass('active');
-      $('#custom_carousel .controls li:eq('+$(evt.relatedTarget).index()+')').addClass('active');
-    })
-});

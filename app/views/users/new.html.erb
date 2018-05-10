@@ -1,7 +1,35 @@
-<div class="page-header">
-  <h1 align="center">Welcome</h1>
+<div class="new container">
+  <div class="row">
+   <div class="col-md-7 col-md-offset-1" style="border: 1px solid #CFCFCF; border-radius: 5px">
+       <div class="row head">
+           <div class="col-md-1" style="font-size: 3em; color: #94C792; margin-top: 17px; margin-right:5px">
+               <span class="glyphicon glyphicon-ok-circle"></span>
+           </div>
+           <div class="col-md-10">
+               <h3> Créer un compte Avito.ma <span>Nouveau!</span></h3>
+                        Toutes vos annonces et vos favoris à un seul endroit, c'est gratuit !
+           </div>
+           
+       </div>
+       <div class="row" style="background-color: white; padding-top:20px;">
+            <%= render 'forms_users' %>
+        </div>
+    </div>
+    <div class="col-md-3">
+            <div class="row" style="font-size: 3em; color: #2978BB; text-align: center">
+                <span class="glyphicon glyphicon-file"></span>
+            </div>
+            <div class="row text">
+                <h4>C'est encore plus facile d'ajouter et de gérer vos annonces!</h4>
+                Ajoutez des photos, modifiez la description et le prix de vos annonces existantes. Publiez de nouvelles annonces, c'est encore plus facile et rapide!
+            </div>
+            <div class="row" style="font-size: 3em; color: #DDB163; text-align: center; margin-top: 30px">
+                <span class="glyphicon glyphicon-star"></span>
+            </div>
+            <div class="row text">
+                <h4>Accédez à vos recherches et à vos annonces sauvegardées depuis n'importe quel ordinateur</h4>
+                Connectez-vous à votre compte depuis n'importe quel ordinateur et accédez à vos recherches et à vos annonces sauvegardées.
+            </div>
+    </div>
+    </div>
 </div>
-
-
-
-<%= render 'forms_users' %>

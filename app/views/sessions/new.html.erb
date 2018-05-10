@@ -1,7 +1,16 @@
-<div class="page-header">
-  <h1 align="center">Log in</h1>
+
+
+<div class="row new">
+   <div class="container forms">
+        <div class=" row ">
+            <h2>Connexion</h2>
+            <h5>Pas encore inscrit? <%= link_to "S'inscrire gratuitement", signup_path %> </h5>
+        </div>
+        <div class="row " style="padding-top: 20px;">
+            <%= render 'forms_users' %>
+        </div>
+    </div>
+    <div class="row txt">
+            <h5>Vous n'avez pas encore de compte? <br><%= link_to "S'inscrire gratuitement", signup_path %> </h5>
+    </div>
 </div>
-
-
-
-<%= render 'forms_users' %>

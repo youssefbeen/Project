@@ -1,0 +1,172 @@
+<%= f.fields_for :pictures do |g| %>
+    
+     <%= g.file_field :picture, :multiple => true, class: "form-control", name: "pictures[picture][]", placeholder: "picture" %>
+     <%= g.hidden_field :picture_cache %>
+    <% end %>
+    </div>
+    <% end %>
+    
+    <%= f.fields_for :user do |g| %>
+                 <div class="form-group">
+               <div class="col-sm-2 control-label">
+                   <%= g.label "Nom:" %>
+           </div>
+            <div class="col-sm-6">
+    
+           <%= g.text_field :username, class: "form-control", placeholder: "Nom complet", autofocus: true %>
+            </div>
+          </div>
+          <div class="form-group">
+               <div class="col-sm-2 control-label">
+                   <%= g.label "Telephone" %>
+           </div>
+            <div class="col-sm-6">
+             <%= g.phone_field :tel, class: "form-control", placeholder: "06..."%>
+            </div>
+          </div>
+          <div class="form-group">
+               <div class="col-sm-2 control-label">
+                   <%= g.label :email %>
+                   </div>
+                    <div class="col-sm-6">
+                     <%= g.email_field :email, class: "form-control", placeholder: "E-mail", rows: 10%>
+            </div>
+          </div>
+          <div class="form-group">
+               <div class="col-sm-2 control-label">
+                   <%= g.label "Mot de passe" %>
+           </div>
+            <div class="col-sm-6">
+             <%= g.password_field :password, class: "form-control", placeholder: "Password" %>
+            </div>
+          </div>
+         <% end %>
+         
+         
+         
+         <%= f.fields_for :pictures do |p| %>
+       <img id="img_prev" width=300 height=300 src="#" alt="your image" class="img-thumbnail hidden"/>
+        <%= p.label "image" %>
+         <%= p.file_field :picture, :multiple => true, class: "form-control", name: "pictures[picture][]", placeholder: "picture", id: "avatar-upload" %>
+         <%= p.hidden_field :picture_cache %>
+    <% end %>
+    
+    
+    
+    
+    
+    if params[:pictures]
+                params[:pictures]['picture'].each do |a|
+                    @pictures = @article.pictures.create!(:picture => a)
+                end
+            end
+            
+            
+            
+            
+            //$(document).ready(function(ev){
+//    $('#custom_carousel').on('slide.bs.carousel', function (evt) {
+//      $('#custom_carousel .controls li.active').removeClass('active');
+//      $('#custom_carousel .controls li:eq('+$(evt.relatedTarget).index()+')').addClass('active');
+//    });
+//    
+//    $('select').change(function(){
+//        window.location.href = window.location.pathname+"?id="+$(this).val();
+//    })
+//    
+//    $(function() {
+//  function readURL(input) {
+//    if (input.files && input.files[0]) {
+//      var reader = new FileReader();
+//
+//      reader.onload = function (e) {
+//        $('#img_prev').attr('src', e.target.result);
+//      }
+//      reader.readAsDataURL(input.files[0]);
+//    }
+//  }
+//
+//      $("#avatar-upload").change(function(){
+//        $('#img_prev').removeClass('hidden');
+//        readURL(this);
+//      });
+//  });
+//});
+
+
+<div class="form-group">
+        <table class="user-photo-form">
+            <thead>
+                <tr>
+                    <td class="col-md-3 control-label">input</td>
+                    <td>preview</td>
+                    <td>remove</td>
+                </tr>
+                </thead>
+                <tbody>
+                     <%= f.fields_for :pictures do |picture| %>
+                        <%= render 'picture_fields', f: picture %>
+                        <div class="links">
+                            <%= link_to_add_association 'add a photo', f, :pictures %>
+                        </div>
+
+                     <% end %>
+                </tbody>
+            
+      
+     </table>
+    </div>
+    
+    
+    
+<% if !current_user %>
+    <div class="row">
+  <%= f.fields_for :user do |g| %>
+      <div class="form-group">
+       <div class="col-sm-2 control-label">
+           <%= g.label "Nom:" %>
+   </div>
+    <div class="col-sm-6">
+     <%= g.text_field :username, class: "form-control", placeholder: "Nom complet", autofocus: true %>
+    </div>
+  </div>
+  <div class="form-group">
+       <div class="col-sm-2 control-label">
+           <%= g.label "Telephone" %>
+   </div>
+    <div class="col-sm-6">
+     <%= g.phone_field :tel, class: "form-control", placeholder: "06..."%>
+    </div>
+  </div>
+  <div class="form-group">
+       <div class="col-sm-2 control-label">
+           <%= g.label :email %>
+   </div>
+    <div class="col-sm-6">
+     <%= g.email_field :email, class: "form-control", placeholder: "E-mail", rows: 10%>
+    </div>
+  </div>
+  <div class="form-group">
+       <div class="col-sm-2 control-label">
+           <%= g.label "Mot de passe" %>
+   </div>
+    <div class="col-sm-6">
+     <%= g.password_field :password, class: "form-control", placeholder: "Password" %>
+    </div>
+  </div>
+  <div class="form-group">
+       <div class="col-sm-2 control-label">
+           <%= g.label "Confirmation mot de passe" %>
+   </div>
+    <div class="col-sm-6">
+     <%= g.password_field :password_confirmation, class: "form-control", placeholder: "Password" %>
+    </div>
+  </div>
+  </div>
+  
+<div class="col-sm-10 col-sm-offset-2">
+    <hr>
+</div>  
+
+    <% end %>
+<% end %>

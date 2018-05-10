@@ -1,51 +1,42 @@
-<div class="col-sm-9" style="background-color: #f1f1f1">
-       <% @articles.each do |a| %>
-        <div class="col-md-4">
-          <div class="product-item">
-              <h3 style="font-weight: bold"><%= link_to a.title, article_path(a) %> 
-              <% if logged_in? and (a.user == current_user or current_user.admin?)%>
-                  <%= link_to article_path(a), method: :delete, data: {confirm: "Are u Sure?" }, class: "btn btn-danger btn-xs ico" do %>
-                  <span class="glyphicon glyphicon-trash"></span>
-                  <% end %>
-                  <%=link_to edit_article_path(a), class: "btn btn-default btn-xs ico" do %> 
-                  <span class="glyphicon glyphicon-pencil"></span>
-                  <% end %>
-                <% end %>
-              </h3>
-              <div class="pi-img-wrapper">
-                  <%= image_tag(a.pictures[0].picture_url, class: "img-responsive") %>
-                <div>
-                 <%= link_to "View", article_path(a), class: "btn btn_view" %>
-                </div>
-              </div>
-              <h3 style="text-transform: none"><%= truncate(a.description, length: 25){ link_to "See More", article_path(a) } %></h3>
-               <div class="pi-price"><%= a.price %> MAD</div>
-            </div>
-        </div>
+<%= render 'shared/search' %>
+      
+<div class="container-fluid articles">
+    <div class="container">
+      <div class="row" style="border-bottom: 1px solid #CFCFCF">
+          <div class="col-md-3 count"><button class="btn btn-default">Tout, <span> <%= @articles.count %> </span></button></div>
+      </div>
+       <div class="row">
+           <% @articles.each do |a| %>
+            <a href="<%= article_path(a) %>" class="lnk">
+               <div class="row bg">
+               <div class="col-md-1">
+                   <h4 class="test">
+                   <% d =  a.created_at.to_date %>
+                   <% if d == Date.today %>
+                       Aujourdhui <br> <span><%=a.created_at.strftime("%H:%M")%></span>
+                    <% elsif d == Date.yesterday%>
+                        Hier <br> <span><%=a.created_at.strftime("%H:%M")%></span>
+                    <% else %>
+                       <%= l a.created_at.to_date, format: :short %>
+                       <br> <span><%=a.created_at.strftime("%H:%M")%></span>
+                    <% end %>
+                   </h4>
+               </div>
+               <div class="col-md-2">
+                   <%= image_tag(a.pictures[0].picture_url(:thumb), class: "img-responsive") %>
+               </div>
+               <div class="col-md-7 title">
+                  <h3><%= a.title %></h3>
+                  <span><%= a.category.name %></span>, <span style="font-weight: bold"><%= a.city.name %></span> 
+               </div>
+               <div class="col-md-2">
+                   <h4 style="margin-top: 35px;"><%= a.price %> DH</h4>
+               </div>
+                   </div>
+                   </a>
            <% end %>
-            
-
-        
+       </div>
+    </div>
+</div
     
-    <table class="table table-striped">
-      <tr>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Price</th>
-      </tr>
-          <% @articles.each do |a| %>
-          <tr>
-              <td><%= a.title %></td>
-              <td><%=a.description%></td>
-              <td><%=a.price%></td>
-              <td><%= link_to "Show", article_path(a) %></td>
-              <td><%= link_to "Delete", article_path(a), method: :delete, data: {confirm: "Are u Sure?" } %></td>
-        </tr>
-          <% end %>
 
-    </table>
-
-
-    <button class="btn btn-default"><%=link_to "Add Article", new_article_path %> </button>
-    <button class="btn btn-default"><%=link_to "Show my Articles", myArticle_path %> </button>
-</div>
