@@ -10,7 +10,7 @@
            <%= f.collection_select(:category_id_eq, Category.all, :id, :name, {:prompt => "Toute les categories"}, {:class=>'form-control list'})%> 
        </div>
        <div class="form-group">
-           <%= f.collection_select(:city_id, City.all, :id, :name, {:prompt => "Tout le Maroc"}, {:class=>'form-control list'})%> 
+           <%= f.collection_select(:city_id_eq, City.all, :id, :name, {:prompt => "Tout le Maroc"}, {:class=>'form-control list'})%> 
        </div>
        <div class="form-group">
           <%= button_tag(type: 'submit', class: "btn btn-default") do %>

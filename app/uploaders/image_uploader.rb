@@ -38,13 +38,18 @@ def delete_empty_upstream_dirs
 #   end
 
   # Create different versions of your uploaded files:
-   version :thumb do
-     process :resize_to_fill => [240, 190]
+    version :large do
+     process :resize_to_fill => [620, 480]
+   end
+   
+   version :thumb, from_version: :large do
+     process :resize_to_fill => [120, 90]
+   end
+    version :slider, from_version: :large do
+     process :resize_to_fill => [80, 60]
    end
     
-    version :small_thumb, from_version: :thumb do
-     process :resize_to_fill => [50, 50]
-   end
+    
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

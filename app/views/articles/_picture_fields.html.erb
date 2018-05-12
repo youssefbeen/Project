@@ -6,7 +6,7 @@
         
     </div>
     <div class="thumb col-md-4">
-        <%= image_tag f.object.picture.url(:small_thumb), class: 'img-responsive' if f.object.picture.url.present? %>
+        <%= image_tag f.object.picture.url(:slider), class: 'img-responsive' if f.object.picture.url.present? %>
     </div>
     <div class="col-md-3">
         <%= link_to_remove_association "remove", f, class: "btn btn-danger " %>

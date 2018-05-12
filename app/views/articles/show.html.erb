@@ -5,50 +5,59 @@
 <div class="container ">
    <div class="row col-md-9">
     <div class="card">
-    <%= l @article.created_at.to_date, format: :short %>
+    <h2><%= @article.title %></h2>
 			<div class="container-fliud">
 				<div class="wrapper row">
-					<div class="preview col-md-6">
+					<div class="preview col-md-12">
 						<div class="preview-pic tab-content">
                          <% c= 0 %>
                           <% @pictures.each do |p| %>
-						  <div class="tab-pane <%= "active" if c==0 %>" id="pic-<%= c+1 %>"><%= image_tag p.picture_url, size: "400x300" %></div>
+						  <div class="tab-pane <%= "active" if c==0 %>" id="pic-<%= c+1 %>"><%= image_tag p.picture_url(:large)%></div>
 						  <% c = c+1 %>
 						  <% end %>
 						</div>
 						<ul class="preview-thumbnail nav nav-tabs">
                          <% c= 0 %>
                           <% @pictures.each do |p| %>
-						  <li class=" <%= "active" if c==0 %>"><a data-target="#pic-<%= c+1 %>" data-toggle="tab"><%= image_tag p.picture_url(:thumb), height: "50", width:"100%" %></a></li>
+						  <li class=" <%= "active" if c==0 %>"><a data-target="#pic-<%= c+1 %>" data-toggle="tab"><%= image_tag p.picture_url(:slider)%></a></li>
 						  <% c = c+1 %>
 						  <% end %>
 						</ul>
 						
-					</div>
-					<div class="details col-md-6">
-						<h3 class="product-title"><%= @article.title %></h3>
-						<div class="rating">
-							<div class="stars">
-								
-							</div>
-							<span class="review-no"></span>
-						</div>
-						<p class="product-description"><%= @article.description %></p>
+                    </div></div>
+                    <div class="row">
+					<div class=" col-md-12">
+						<div><h2 class="price"><span><%= @article.price %> MAD</span></h2></div>
+						<div class="col-md-8">
+						    <%= @article.description %>
+						
+						<p class="product-description"></p>
 						
                         <p class="vote"></p>
                         <h5 class="sizes"></h5>
                         
                         <h5 class="colors"></h5>
-                        <h4 class="price">Prix <span><%= @article.price %> MAD</span></h4>
+                        
 						<div class="action">
-							<button class="add-to-cart btn btn-default" type="button">add to cart</button>
-							<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+							<button class="add-to-cart btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> <%= @article.user.tel %></button>
+							
 						</div>
+					</div>
+					<div class="col-md-4">
+					    <table class="info">
+					        <tr>
+					            <td class="colonne">Ville:</td>
+					            <td><%= @article.city.name %></td>
+					        </tr>
+					        <tr>
+                               <td class="colonne">Categorie:</td>
+					        <td><%= @article.category.name %></td>
+                            </tr>
+					    </table>
+					</div>
 					</div>
 				</div>
 			</div>
 		</div>
    </div>
    
-   
-</div>

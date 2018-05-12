@@ -4,8 +4,31 @@
 <% end %>
 
 
-<%= form_for @category, url: {controller: "categories", action: "create"} do |f| %>
-<%= f.label :name %>
-<%= f.text_field :name %>
-<%= f.submit %>
-<% end %>
+
+<%= form_for(@category, :html => {class: "form-horizontal", role: "form", multipart: true}, url: {controller: "categories", action: "create"}) do |f| %>
+ <div class="form-group">
+       <div class="col-sm-3 control-label">
+           <%= f.label :name %>
+       </div>
+        <div class="col-sm-4">
+            <%= f.text_field :name %>  
+        </div>
+  </div>
+    <div class="form-group">
+       <div class="col-sm-3 control-label">
+           <%= f.label :image %>
+       </div>
+        <div class="col-sm-4">
+            <%= f.file_field :image, class: "form-control"%>
+            <%= f.hidden_field :image_cache %>
+        </div>
+        <div class="thumb"></div>
+        
+  </div>
+  <div class="form-group">
+     <div class="col-sm-2 col-sm-offset-3">
+         <%= f.submit class: "form-control btn btn-success"%>
+     </div>
+      
+  </div>
+  <% end %>

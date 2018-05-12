@@ -28,7 +28,8 @@ class UsersController < ApplicationController
     def edit
     end
     
-    def update 
+    def update
+       
         if @user.update(params_user)
             flash[:success] = "Users Updated successfully"
             redirect_to user_path(@user)
@@ -53,7 +54,7 @@ class UsersController < ApplicationController
     private
     
     def params_user
-        params.require(:user).permit(:username, :email, :password, :image, :password_confirmation, :tel)
+        params.permit(:username, :email, :tel, :password)
     end
     
     def set_user

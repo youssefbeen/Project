@@ -18,6 +18,7 @@
     
     <div class="row">
         <div class="col-md-4">
+           <%= @user.tel %>
             <%= link_to "edit", edit_user_path(@user) %>
         </div>
         <div class="col-md-8"><%= link_to "delete",  user_path(@user), method: :delete, data: {confirm: "Are u sure?"}  %></div>

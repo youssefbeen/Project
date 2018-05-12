@@ -4,12 +4,17 @@
         <h3>Choisissez une ville:</h3>
         <ul>
             <% City.all.each do |v| %>
-            <li><%=v.name%></li>
+            <li><%= link_to v.name, articles_path(q: {city_id_eq: v.id })%></li>
             <%end%>
         </ul>
         
     </div>
     <div class="col-md-9">
         <h3>Choisissez une categorie</h3>
+        <ul>
+            <% Category.all.each do |v| %>
+            <li><%= link_to v.name, articles_path(q: {category_id_eq: v.id })%></li>
+            <%end%>
+        </ul>
     </div>
 </div>
