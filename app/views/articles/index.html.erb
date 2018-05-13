@@ -3,7 +3,11 @@
 <div class="container-fluid articles">
     <div class="container">
       <div class="row" style="border-bottom: 1px solid #CFCFCF">
-          <div class="col-md-3 count"><button class="btn btn-default">Tout, <span> <%= @articles.count %> </span></button></div>
+          <div class="col-md-12 count">
+          <div>
+              <span class="tout">Tout, </span><span> <%= @articles.count %> </span>
+          </div>
+          </div>
       </div>
        <div class="row">
            <% @articles.each do |a| %>
@@ -29,8 +33,17 @@
                   <h3><%= a.title %></h3>
                   <span><%= a.category.name %></span>, <span style="font-weight: bold"><%= a.city.name %></span> 
                </div>
-               <div class="col-md-2">
+               <div class="col-md-1">
                    <h4 style="margin-top: 35px;"><%= a.price %> DH</h4>
+               </div>
+                  <div class="col-md-1" style="margin-top: 35px;">
+                  <% if (is_same_user(a) || is_admin?) %>
+                  <%= link_to edit_article_path(a), class: "btn btn-default" do %>
+                  <span class="glyphicon glyphicon-pencil"></span>
+                   <% end %>
+                   <%= link_to article_path(a), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } do %>
+                   <span class="glyphicon glyphicon-trash"></span>                   <% end %>
+                   <% end %>
                </div>
                    </div>
                    </a>

@@ -583,3 +583,77 @@ select{
     padding: 15px 10px;
     
 }
+
+.categ{
+    border: 1px solid black;
+    text-align: center;
+    width: 200px;
+    margin: 20px;
+    padding: 0;
+    background-color: #F4F7F9;
+    border-radius: 5px;
+}
+
+.categ img{
+  width: 200px;
+    height: 100px;
+    object-fit: fill;
+}
+
+.img_categ{
+    color: #366797;
+    display: inline-block;
+    padding: 10px 0;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.side{
+    border: 1px solid #CFCFCF;
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 60px;
+    padding: 15px;
+    padding-top: 0;
+    padding-bottom: 4px;
+    
+}
+
+.name{
+    font-weight: bold;
+    border-bottom: 1px solid #CFCFCF;
+    background-color: #F1F0EE;
+    padding: 12px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.inf{
+    padding: 15px;
+    font-size: 1.1em;
+    line-height: 2.2;
+    
+}
+
+.count{
+    background-color: #EDEDED;
+    height: 35px;
+}
+.count div{
+    background-color: white;
+    width: 20%;
+    height: 100%;
+    margin-left: 1px
+}
+
+.tout{
+    display: inline-block;
+    padding: 15px;
+    padding-right: 0;
+    font-weight: bold;
+    font-size: 1.4em;
+}
+
+body{
+    background-image: url(asset-path('body_bg.png'));
+}

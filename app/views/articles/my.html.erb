@@ -32,7 +32,7 @@
                    <h4 style="margin-top: 35px;"><%= a.price %> DH</h4>
                </div>
                <div class="col-md-1" style="margin-top: 35px;">
-                  <% if is_same_user(a) %>
+                  <% if is_same_user(a) || is_admin? %>
                   <%= link_to edit_article_path(a), class: "btn btn-default" do %>
                   <span class="glyphicon glyphicon-pencil"></span>
                    <% end %>
@@ -46,6 +46,4 @@
        </div>
     </div>
 </div>
-    
-<button class="btn btn-default"><%=link_to "Add Article", new_article_path %> </button>
-<button class="btn btn-default"><%=link_to "Show my Articles", myArticle_path %> </button>
+     

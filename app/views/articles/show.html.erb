@@ -5,7 +5,15 @@
 <div class="container ">
    <div class="row col-md-9">
     <div class="card">
-    <h2><%= @article.title %></h2>
+    <h2><%= @article.title %>
+             <span style="float: right"> <% if is_same_user(@article) || is_admin? %>
+                  <%= link_to edit_article_path(@article), class: "btn btn-default" do %>
+                  <span class="glyphicon glyphicon-pencil"></span>
+                   <% end %>
+                   <%= link_to article_path(@article), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } do %>
+                   <span class="glyphicon glyphicon-trash"></span>                   <% end %>
+                   <% end %></span>
+               </h2>
 			<div class="container-fliud">
 				<div class="wrapper row">
 					<div class="preview col-md-12">
@@ -28,7 +36,7 @@
                     <div class="row">
 					<div class=" col-md-12">
 						<div><h2 class="price"><span><%= @article.price %> MAD</span></h2></div>
-						<div class="col-md-8">
+						<div class="col-md-8" style="border-top: 2px solid gray; padding-top: 14px">
 						    <%= @article.description %>
 						
 						<p class="product-description"></p>
@@ -60,4 +68,25 @@
 			</div>
 		</div>
    </div>
+   <div class="col-md-3">
+      <div class="side">
+       <div class="name row">
+           <span class="glyphicon glyphicon-user"></span> <%= @article.user.username %>
+       </div>
+   
+   <div class="inf row">
+       <span class="glyphicon glyphicon-map-marker"></span> <%= @article.city.name %> <br>
+       <span class="glyphicon glyphicon-time"></span> <% d =  @article.created_at.to_date %>
+                   <% if d == Date.today %>
+                       Aujourdhui <br> <span><%=@article.created_at.strftime("%H:%M")%></span>
+                    <% elsif d == Date.yesterday%>
+                        Hier <span><%=@article.created_at.strftime("%H:%M")%></span>
+                    <% else %>
+                       <%= l @article.created_at.to_date, format: :short %> 
+                        <span><%=@article.created_at.strftime("%H:%M")%></span>
+                    <% end %>
+   </div>
+   </div>
+    </div>
+</div>
    

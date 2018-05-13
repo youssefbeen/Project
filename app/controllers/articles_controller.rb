@@ -79,7 +79,7 @@ class ArticlesController < ApplicationController
 
     def index
         @search = Article.search(params[:q])
-        @articles = @search.result
+        @articles = @search.result.order(created_at: :desc)
 #        @articles = @category ? @category.articles : Article.all
     end
     
@@ -99,7 +99,7 @@ class ArticlesController < ApplicationController
     
     def set_article
        @search = Article.search(params[:q])
-       @article = Article.find(params[:id])
+       @article = Article.find(params[:id]).order(created_at: :desc)
        @user = @article.user
     end
     
