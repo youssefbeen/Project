@@ -1,0 +1,51 @@
+<%= render 'shared/search' %>
+
+<div class="container-fluid articles">
+    <div class="container">
+      <div class="row" style="border-bottom: 1px solid #CFCFCF">
+          <div class="col-md-12 count">
+          <div>
+              <span class="tout">Tout, </span><span> <%= @users.count %> </span>
+          </div>
+          </div>
+      </div>
+       <div class="row">
+           <% @users.each do |a| %>
+            <a href="<%= user_path(a) %>" class="lnk">
+               <div class="row bg">
+               <div class="col-md-1">
+                   <h4 class="test">
+                   <% d =  a.created_at.to_date %>
+                   <% if d == Date.today %>
+                       Aujourdhui <br> <span><%=a.created_at.strftime("%H:%M")%></span>
+                    <% elsif d == Date.yesterday%>
+                        Hier <br> <span><%=a.created_at.strftime("%H:%M")%></span>
+                    <% else %>
+                       <%= l a.created_at.to_date, format: :short %>
+                       <br> <span><%=a.created_at.strftime("%H:%M")%></span>
+                    <% end %>
+                   </h4>
+               </div>
+               <div class="col-md-3 title">
+                  <h3><%= a.username %></h3>
+               </div>
+               <div class="col-md-3 title">
+                  <h3><%= a.email %></h3>
+
+               </div>
+               <div class="col-md-3">
+                   <h4 style="margin-top: 35px;"><%= a.tel %></h4>
+               </div>
+                  <div class="col-md-1" style="margin-top: 35px;">
+                  <% if (is_admin?) %>
+
+                   <%= link_to user_path(a), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } do %>
+                   <span class="glyphicon glyphicon-trash"></span>                   <% end %>
+                   <% end %>
+               </div>
+                   </div>
+                   </a>
+           <% end %>
+       </div>
+    </div>
+</div>
