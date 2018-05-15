@@ -7,16 +7,16 @@
             <li><%= link_to v.name, articles_path(q: {city_id_eq: v.id })%></li>
             <%end%>
         </ul>
-        
+
     </div>
     <div class="col-md-7">
         <h3>Choisissez une categorie</h3>
             <% Category.all.each do |v| %>
             <div class="col-md-4 categ">
-               <%= image_tag v.image_url(:large) if v.image.present? %>
+               <%= image_tag v.image_url if v.image.present? %>
                 <%= link_to v.name, articles_path(q: {category_id_eq: v.id }), class: "img_categ"%>
             </div>
-            
+
             <%end%>
     </div>
 </div>

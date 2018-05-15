@@ -595,17 +595,18 @@ select{
 }
 
 .categ img{
-  width: 100%;
+  width: 200px;
     height: 100px;
-    object-fit: fill;
+    object-fit: cover;
 }
 
 .img_categ{
     color: #366797;
     display: inline-block;
+    text-align: center;
     padding: 8px 0;
-    font-size: 1.3em;
-    font-weight: bold;
+    font-size: 1.1em;
+    font-weight: 500;
 }
 
 .side{
