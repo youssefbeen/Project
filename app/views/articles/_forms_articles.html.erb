@@ -2,7 +2,7 @@
 
 <%= render 'shared/errors', obj: @article %>
 
-<%= form_for(@article, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+<%= form_for(@article, :html => {class: "form-horizontal", id:"article-form", role: "form"}) do |f| %>
  <div class="form-group">
        <div class="col-sm-3 control-label">
            <%= f.label :category %>
@@ -102,7 +102,7 @@
            <%= g.label "Mot de passe" %>
    </div>
     <div class="col-sm-6">
-     <%= g.password_field :password, class: "form-control", placeholder: "Password" %>
+     <%= g.password_field :password, id:"password", class: "form-control", placeholder: "Password" %>
     </div>
   </div>
   <div class="form-group">

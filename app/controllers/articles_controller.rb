@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
         @article.user = current_user ? current_user : User.new
         @user= @article.user
     end
-
+    
     def load_category
         @category = Category.find(params[:category_id]) if params[:category_id]
     end

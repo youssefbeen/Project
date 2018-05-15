@@ -5,14 +5,14 @@ Rails.application.routes.draw do
     get '/users/check_email', to: 'users#check_email'
     get 'signup', to: 'users#new'
     resources "users", expect: [:index]
-    
+
     get 'login', to: 'sessions#new'
     post 'login', to: 'sessions#create'
     delete 'logout', to: 'sessions#destroy'
-    
+
     get 'myArticle', to: 'articles#my'
     resources :categories
-    
+
     resources "pictures"
 #    get 'manage/:id', to: 'categories#index'
 #    post 'manage/:id', to: 'categories#create'
@@ -20,4 +20,3 @@ Rails.application.routes.draw do
 #
 
 end
-

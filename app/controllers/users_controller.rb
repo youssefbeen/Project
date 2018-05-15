@@ -47,7 +47,8 @@ class UsersController < ApplicationController
     end
 
     def check_email
-        @us = User.find_by_email(params[:email])
+        @us = User.find_by_email(params[:email]) if params[:email]
+        @us = User.find_by_email(params["article"]["user_attributes"][:email]) if params["article"]
         @bool = @us ? nil : true
         respond_to do |format|
             format.json { render json: @bool.to_json }

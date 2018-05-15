@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1 align="center">Show Article Details</h1>
+  <h1 align="center">Information Utilisateur</h1>
 </div>
 
 
@@ -12,17 +12,19 @@
         <div class="col-md-8"><%= @user.username %></div>
     </div>
     <div class="row">
-        <div class="col-md-4">Email</div>
+<div class="col-md-4">Email</div>
         <div class="col-md-8"><%= @user.email %></div>
     </div>
-    
+
     <div class="row">
-        <div class="col-md-4">
+      <div class="col-md-4">Phone</div>
+        <div class="col-md-8">
            <%= @user.tel %>
-            <%= link_to "edit", edit_user_path(@user) %>
         </div>
-        <div class="col-md-8"><%= link_to "delete",  user_path(@user), method: :delete, data: {confirm: "Are u sure?"}  %></div>
+        <br><br>
+        <div class="col-md-8"><%= link_to "Modifier", edit_user_path(@user), class: "btn btn-default" %>
+        <%= link_to "Suppriner compte", user_path(@user), class: "btn btn-danger", method: :delete, data: {confirm: "Are u sure?"}  %></div>
     </div>
-    
-    <button class="btn btn-default"><%=link_to "Index", users_path %> </button>
+    <br><br>
+    <button class="btn btn-default"><%=link_to "Acceuil", root_path %> </button>
 </div>

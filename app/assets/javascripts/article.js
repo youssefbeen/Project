@@ -37,28 +37,43 @@ $(document).on("turbolinks:load", function(){
       && /[a-z]/i.test(value);
   }, 'Your password must be at least 6 characters long and contain at least one number and one char\'.');
 
-   $("#register-form").validate({
+   $("#article-form").validate({
     rules: {
-      email: {
+      "article[title]": {
+        required: true,
+        minlength: 3,
+      },
+      "article[description]": {
+        required: true,
+        minlength: 30,
+      },
+      "article[price]": {
+        required: true,
+        digits: true
+      },
+      "article[user_attributes][username]": {
+        required: true,
+        minlength: 3,
+      },
+      "article[user_attributes][email]": {
         required: true,
         email: true,
         remote: "/users/check_email"
       },
-      "username": "required",
-      password: {
+      "article[user_attributes][password]": {
         required: true,
         strongPassword: true
       },
-      password2: {
+      "article[user_attributes][password_confirmation]": {
         required: true,
         equalTo: '#password'
       },
-      phone: {
+      "article[user_attributes][tel]": {
         required: true,
         digits: true
       }},
     messages: {
-      email: {
+      "article[user_attributes][email]": {
         required: 'Please enter an email address.',
         email: 'Please enter a <em>valid</em> email address.',
         remote: $.validator.format("{0} is already associated with an account.")
