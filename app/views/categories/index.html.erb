@@ -1,7 +1,17 @@
-<% @categories.each do |c| %>
-<%= c.name %>
-<%= link_to "Delete", category_path(c), method: :delete, data: { confirm: "Are you sure?" } %>
-<% end %>
+<table class="table" style="width: 50%; margin-left: 30px">
+  <tr>
+    <th>Nom</th>
+    <th>Supprimer</th>
+  </tr>
+  <% @categories.each do |c| %>
+  <tr>
+    <td><%= c.name %></td>
+    <td><%= link_to "Delete", category_path(c), method: :delete, data: { confirm: "Are you sure?" } %>
+</td>
+  </tr>
+  <% end %>
+</table>
+
 
 
 
@@ -11,7 +21,7 @@
            <%= f.label :name %>
        </div>
         <div class="col-sm-4">
-            <%= f.text_field :name %>  
+            <%= f.text_field :name %>
         </div>
   </div>
     <div class="form-group">
@@ -23,12 +33,12 @@
             <%= f.hidden_field :image_cache %>
         </div>
         <div class="thumb"></div>
-        
+
   </div>
   <div class="form-group">
      <div class="col-sm-2 col-sm-offset-3">
          <%= f.submit class: "form-control btn btn-success"%>
      </div>
-      
+
   </div>
   <% end %>

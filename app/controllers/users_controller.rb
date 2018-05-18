@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     def create
         @user = User.create(params_user)
         if @user.save
-            flash[:success] = "Welcome to myApp #{@user.username}"
+            flash[:success] = "Bienvenu M. #{@user.username}"
             redirect_to articles_path
         else
             render 'new'
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     def update
 
         if @user.update(params_user)
-            flash[:success] = "Users Updated successfully"
+            flash[:success] = "Utilisateur modifie"
             redirect_to user_path(@user)
         else
             render 'edit'
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
 
     def destroy
       if @user.destroy
-          flash[:success] = "Article was successfully deleted"
+          flash[:success] = "Utilisateru supprime avec succes"
 #            redirect_to articles_path
           redirect_back fallback_location: root_path
       end
@@ -68,7 +68,7 @@ class UsersController < ApplicationController
 
     def require_same_user
        if !@user==current_user and !current_user.admin?
-           flash[:danger] = "You can only delete or edit your own profile"
+           flash[:danger] = "Vous ne pouvez modifier ou supprimer que votre propre profil"
            redirect_to users_path
        end
     end
@@ -77,7 +77,7 @@ class UsersController < ApplicationController
 
         if current_user and !current_user.admin?
 
-          flash[:danger] = "Only admin users can perform that action"
+          flash[:danger] = "Seul les admnistrateurs ont la possibilite d'effectuer cette operation"
 
           redirect_to root_path
         elsif !current_user

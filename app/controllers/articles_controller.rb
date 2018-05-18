@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
         @article.user = current_user ? current_user : User.new
         @user= @article.user
     end
-    
+
     def load_category
         @category = Category.find(params[:category_id]) if params[:category_id]
     end
@@ -43,7 +43,7 @@ class ArticlesController < ApplicationController
 #            end
 
 
-            flash[:success] = "Article was successfully created"
+            flash[:success] = "Annonce cree avec succes"
             format.html{redirect_to article_path(@article)}
         else
             format.html{render action: "new" }
@@ -60,7 +60,7 @@ class ArticlesController < ApplicationController
 
     def update
         if @article.update(article_params)
-            flash[:success] = "Article was successfully updated"
+            flash[:success] = "Annonce modifiee"
             redirect_to article_path(@article)
         else
             render 'edit'
@@ -69,7 +69,7 @@ class ArticlesController < ApplicationController
 
     def destroy
         if @article.destroy
-            flash[:success] = "Article was successfully deleted"
+            flash[:success] = "Annonce supprime avec succes"
 #            redirect_to articles_path
             redirect_back fallback_location: root_path
         end
@@ -105,7 +105,7 @@ class ArticlesController < ApplicationController
 
     def require_same_user
        if @article.user != current_user and !current_user.admin?
-           flash[:danger] = "You can only delete or edit your own article"
+           flash[:danger] = "Vous ne pouvez modifier ou supprimer que votre propre annonce"
            redirect_to articles_path
        end
     end
